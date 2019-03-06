@@ -62,11 +62,22 @@ public class TelaPrincipalMDI extends javax.swing.JFrame {
             .addGap(0, 411, Short.MAX_VALUE)
         );
 
+        jMenuBar1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jMenuBar1MouseReleased(evt);
+            }
+        });
+
         jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/page.png"))); // NOI18N
         jMenu1.setText("Arquivo");
 
         jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/door_out.png"))); // NOI18N
         jMenuItem1.setText("Sair");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuItem1);
 
         jMenuBar1.add(jMenu1);
@@ -177,10 +188,18 @@ public class TelaPrincipalMDI extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem7ActionPerformed
 
     private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
-        TelaMenuPopUp telaPopUp = new TelaMenuPopUp();
+        TelaPopUpMenu telaPopUp = new TelaPopUpMenu();
         jDesktopPane1.add(telaPopUp);
         telaPopUp.setVisible(true);
     }//GEN-LAST:event_jMenuItem8ActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jMenuBar1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuBar1MouseReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuBar1MouseReleased
 
     /**
      * @param args the command line arguments

@@ -5,6 +5,7 @@
  */
 package view;
 
+import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 
 /**
@@ -46,6 +47,17 @@ public class TelaLogin extends javax.swing.JFrame {
 
         jLabel2.setText("Senha");
 
+        txtPass.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPassActionPerformed(evt);
+            }
+        });
+        txtPass.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtPassKeyPressed(evt);
+            }
+        });
+
         jButton1.setText("Entrar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -68,9 +80,7 @@ public class TelaLogin extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
@@ -132,20 +142,50 @@ public class TelaLogin extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    public boolean checkLogin(String login, String senha) {
+        return login.equalsIgnoreCase("yuri") && senha.equals("1234");
+    }
+
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
-        if(txtLogin.getText().equalsIgnoreCase("yuri")&&txtPass.getText().equals("1234")){
+//      LOGIN COM A AULA #13
+//        if(this.checkLogin(txtLogin.getText(), new String(txtPass.getPassword()))){
+//            JOptionPane.showMessageDialog(null, "Bem vindo!");
+//            new TelaPrincipalMDI().setVisible(true);
+//        } else {
+//            JOptionPane.showMessageDialog(null, "Usuário e/ou senha incorreto(s)!");
+//        }
+//      LOGIN COM A AULA INICIAL
+//      if(txtLogin.getText().equalsIgnoreCase("yuri")&&txtPass.getText().equals("1234")){
+        if (this.checkLogin(txtLogin.getText(), new String(txtPass.getPassword()))) {
             JOptionPane.showMessageDialog(null, "Acesso autorizado!");
             new TelaPrincipalMDI().setVisible(true);
+            this.dispose();
         } else {
             JOptionPane.showMessageDialog(null, "Usuário e/ou senha incorreto(s)!");
         }
-            
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void txtLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLoginActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtLoginActionPerformed
+
+    private void txtPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPassKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            if (this.checkLogin(txtLogin.getText(), new String(txtPass.getPassword()))) {
+                JOptionPane.showMessageDialog(null, "Acesso autorizado!");
+                new TelaPrincipalMDI().setVisible(true);
+                this.dispose();
+            } else {
+                JOptionPane.showMessageDialog(null, "Usuário e/ou senha incorreto(s)!");
+            }
+        }
+    }//GEN-LAST:event_txtPassKeyPressed
+
+    private void txtPassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPassActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPassActionPerformed
 
     /**
      * @param args the command line arguments
