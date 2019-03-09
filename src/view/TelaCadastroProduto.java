@@ -7,6 +7,7 @@ package view;
 
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 
 /**
  *
@@ -19,6 +20,10 @@ public class TelaCadastroProduto extends javax.swing.JInternalFrame {
      */
     public TelaCadastroProduto() {
         initComponents();
+        
+        DefaultTableModel modelo = (DefaultTableModel) jtProdutos.getModel();
+        jtProdutos.setRowSorter(new TableRowSorter(modelo));
+
     }
 
     /**
@@ -73,7 +78,12 @@ public class TelaCadastroProduto extends javax.swing.JInternalFrame {
             }
         });
 
-        jButton3.setText("ALTERAR");
+        jButton3.setText("ATUALIZAR");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -126,6 +136,8 @@ public class TelaCadastroProduto extends javax.swing.JInternalFrame {
                 .addContainerGap())
         );
 
+        jScrollPane1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+
         jtProdutos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -133,7 +145,25 @@ public class TelaCadastroProduto extends javax.swing.JInternalFrame {
             new String [] {
                 "DESCRIÇÃO", "QTD", "PREÇO"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jtProdutos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jtProdutosMousePressed(evt);
+            }
+        });
+        jtProdutos.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jtProdutosKeyReleased(evt);
+            }
+        });
         jScrollPane1.setViewportView(jtProdutos);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -147,8 +177,8 @@ public class TelaCadastroProduto extends javax.swing.JInternalFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 243, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 246, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -174,6 +204,38 @@ public class TelaCadastroProduto extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(null, "Selecione um produto para excluir!");
         }
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        if (jtProdutos.getSelectedRow() != -1) {
+            jtProdutos.setValueAt(txtDesc.getText(), jtProdutos.getSelectedRow(), 0);
+            jtProdutos.setValueAt(txtQtd.getText(), jtProdutos.getSelectedRow(), 1);
+            jtProdutos.setValueAt(txtPreco.getText(), jtProdutos.getSelectedRow(), 2);
+        } else {
+            JOptionPane.showMessageDialog(null, "Selecione um campo para alterar!");
+        }
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jtProdutosKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtProdutosKeyReleased
+        if (jtProdutos.getSelectedRow() != -1) {
+            txtDesc.setText(jtProdutos.getValueAt(jtProdutos.getSelectedRow(), 0).toString());
+            txtQtd.setText(jtProdutos.getValueAt(jtProdutos.getSelectedRow(), 1).toString());
+            txtPreco.setText(jtProdutos.getValueAt(jtProdutos.getSelectedRow(), 2).toString());
+
+        } else {
+            JOptionPane.showMessageDialog(null, "Selecione um campo para alterar!");
+        } 
+    }//GEN-LAST:event_jtProdutosKeyReleased
+
+    private void jtProdutosMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtProdutosMousePressed
+        if (jtProdutos.getSelectedRow() != -1) {
+            txtDesc.setText(jtProdutos.getValueAt(jtProdutos.getSelectedRow(), 0).toString());
+            txtQtd.setText(jtProdutos.getValueAt(jtProdutos.getSelectedRow(), 1).toString());
+            txtPreco.setText(jtProdutos.getValueAt(jtProdutos.getSelectedRow(), 2).toString());
+
+        } else {
+            JOptionPane.showMessageDialog(null, "Selecione um campo para alterar!");
+        } 
+    }//GEN-LAST:event_jtProdutosMousePressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

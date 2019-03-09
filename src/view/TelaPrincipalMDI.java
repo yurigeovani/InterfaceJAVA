@@ -152,6 +152,11 @@ public class TelaPrincipalMDI extends javax.swing.JFrame {
 
         jMenuItem9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/zoom.png"))); // NOI18N
         jMenuItem9.setText("Pesquisar");
+        jMenuItem9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem9ActionPerformed(evt);
+            }
+        });
         jMenu3.add(jMenuItem9);
 
         jMenuBar1.add(jMenu3);
@@ -199,24 +204,44 @@ public class TelaPrincipalMDI extends javax.swing.JFrame {
         TelaCadastroUsuario telaCadUser = new TelaCadastroUsuario();
         jDesktopPane1.add(telaCadUser);
         telaCadUser.setVisible(true);
+        try {
+            telaCadUser.setSelected(true);
+            telaCadUser.setMaximizable(true);
+            telaCadUser.setMaximum(true);
+        } catch (java.beans.PropertyVetoException e) {}
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
         TelaCadastroCliente telaCadCli = new TelaCadastroCliente();
         jDesktopPane1.add(telaCadCli);
         telaCadCli.setVisible(true);
+        try {
+            telaCadCli.setSelected(true);
+            telaCadCli.setMaximizable(true);
+            telaCadCli.setMaximum(true);
+        } catch (java.beans.PropertyVetoException e) {}
     }//GEN-LAST:event_jMenuItem6ActionPerformed
 
     private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
         TelaCardLayout telaCard = new TelaCardLayout();
         jDesktopPane1.add(telaCard);
         telaCard.setVisible(true);
+        try {
+            telaCard.setSelected(true);
+            telaCard.setMaximizable(true);
+            telaCard.setMaximum(true);
+        } catch (java.beans.PropertyVetoException e) {}
     }//GEN-LAST:event_jMenuItem7ActionPerformed
 
     private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
         TelaPopUpMenu telaPopUp = new TelaPopUpMenu();
         jDesktopPane1.add(telaPopUp);
         telaPopUp.setVisible(true);
+        try {
+            telaPopUp.setSelected(true);
+            telaPopUp.setMaximizable(true);
+            telaPopUp.setMaximum(true);
+        } catch (java.beans.PropertyVetoException e) {}
     }//GEN-LAST:event_jMenuItem8ActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
@@ -232,14 +257,39 @@ public class TelaPrincipalMDI extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
-        // TODO add your handling code here:
+        TelaSlider telaSlider = new TelaSlider();
+        jDesktopPane1.add(telaSlider);
+        telaSlider.setVisible(true);
+        
+        try {
+            telaSlider.setSelected(true);
+            telaSlider.setMaximizable(true);
+            telaSlider.setMaximum(true);
+        } catch (java.beans.PropertyVetoException e) {}
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     private void jMenuItem10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem10ActionPerformed
         TelaCadastroProduto telaProduto = new TelaCadastroProduto();
         jDesktopPane1.add(telaProduto);
         telaProduto.setVisible(true);
+        try {
+            telaProduto.setSelected(true);
+            telaProduto.setMaximizable(true);
+            telaProduto.setMaximum(true);
+        } catch (java.beans.PropertyVetoException e) {}
     }//GEN-LAST:event_jMenuItem10ActionPerformed
+
+    private void jMenuItem9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9ActionPerformed
+        TelaJFileChooser telaArquivo = new TelaJFileChooser();
+        jDesktopPane1.add(telaArquivo);
+        telaArquivo.setVisible(true);
+        
+        try {
+            telaArquivo.setSelected(true);
+            telaArquivo.setMaximizable(true);
+            telaArquivo.setMaximum(true);
+        } catch (java.beans.PropertyVetoException e) {}
+    }//GEN-LAST:event_jMenuItem9ActionPerformed
 
     /**
      * @param args the command line arguments
